@@ -6,7 +6,7 @@
 
 Your coding-agent terminals, in your pocket. A session that needs a decision asks you in Telegram with tap buttons and gets your answer back as command output. You can also message a session from your phone, start a new one, send it files, and stop it in two taps.
 
-It is free and small: about 2,500 lines of plain Node, no dependencies, one background process on your own computer. No account besides a Telegram bot, no server, no open network ports. Built for Windows, macOS and Linux; tested for real on Windows so far.
+It is free and small: about 2,500 lines of plain Node, no dependencies, one background process on your own computer. No account besides a Telegram bot, no server, no open network ports. Built for Windows, macOS and Linux; an early release, see what was tested below.
 
 ## Install
 
@@ -46,7 +46,7 @@ What it does not do: Telegram bot chats are not end to end encrypted, so Telegra
 
 ### What was tested
 
-Windows 11 for real (install, pairing, phone round trip). macOS and Linux share the same code and pass the offline test's checks for their service files, but were not run on real machines yet. Reports are welcome.
+This is an early release. On Windows 11 the installer and the full offline test (a fake Telegram server, 46 steps) were run for real, and a fresh coding agent completed the install from the prompt above. This version has not yet done a round trip with real Telegram on a phone, and macOS and Linux were not run on real machines. If something breaks, please open an issue.
 
 Measured on Windows with Node 24: the listener idles at about 65 MB of memory.
 

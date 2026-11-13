@@ -32,7 +32,7 @@
 
 ## What was tested
 
-The offline test (`node test/test.mjs`) runs against a fake Telegram server and fake sessions. It was run on Windows 11, including a real DPAPI round trip. The macOS Keychain, Linux secret-tool, launchd and systemd paths are covered only by checks of the generated files and command choices, not run on those systems.
+The offline test (`node test/test.mjs`) runs against a fake Telegram server and fake sessions. It was run on Windows 11, including a real DPAPI round trip. The macOS Keychain, Linux secret-tool, launchd and systemd paths are covered only by checks of the generated files and command choices, not run on those systems. This version has not yet been run against the real Telegram service.
 
 ## Reporting a problem
 
