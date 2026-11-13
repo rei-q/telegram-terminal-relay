@@ -1,0 +1,14 @@
+{
+  "name": "telegram-terminal-relay",
+  "version": "0.1.0",
+  "description": "Reach your coding-agent terminals from Telegram: questions, answers, updates and new sessions, with no dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node test/test.mjs",
+    "relay": "node src/relay.mjs"
+  }
+}

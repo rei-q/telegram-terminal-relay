@@ -1,0 +1,27 @@
+# Nothing private belongs in this repository: no token, no pairing data, no received packages, no logs.
+.env*
+*.pem
+*.key
+.npmrc
+config.json
+control.key
+token
+token.dpapi
+offset.json
+INSTALLED.json
+inbox/
+acks/
+msgs/
+files/
+pending/
+done/
+sessions/
+mail/
+listening/
+closable/
+sent/
+threads/
+logs/
+*.log
+*.tmp
+node_modules/
