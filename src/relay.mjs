@@ -517,7 +517,7 @@ async function status() {
   console.log(`machine:  ${c.pcName || '(not set)'}\nbot:      ${c.bot ? '@' + c.bot : '(unknown)'}\ntoken:    ${tok}\npaired:   ${where}\ndata:     ${DATA_DIR}`);
   console.log(`listener: ${st ? `running, pid ${st.pid}, last contact with Telegram ${st.lastPollOk || 'never'}` : 'NOT RUNNING'}`);
   if (!st && daemonProblem()) console.log(`PROBLEM:  ${daemonProblem()}`);
-  else if (!st) console.log(`start it: ${manualStart()}`);
+  else if (!st) console.log(tok.startsWith('set') ? `start it: ${manualStart()}` : 'start it: run setup first (no token is stored yet)');
   if (st && st.conflict) console.log('PROBLEM:  another machine is listening on this same bot. Each machine needs its own bot token.');
   else if (st && st.error) console.log(`last error: ${st.error}`);
   console.log(`login start: ${serviceState()}`);

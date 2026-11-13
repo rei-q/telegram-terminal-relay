@@ -20,7 +20,9 @@ node install.mjs
 
 `install.mjs` copies the files to `~/.telegram-terminal-relay/` and runs the offline test there. The last line of the test should read `N passed`. The test uses a fake Telegram server and fake sessions; it sends nothing to Telegram.
 
-Below, `RELAY` means `node ~/.telegram-terminal-relay/src/relay.mjs` (on Windows: `node "%USERPROFILE%\.telegram-terminal-relay\src\relay.mjs"`).
+If the folder is not a git checkout (for example a downloaded archive), the installer works the same way.
+
+Below, `RELAY` means `node ~/.telegram-terminal-relay/src/relay.mjs`. The installer's last line prints this command with the full path for this computer; give the user that exact line, since `~` does not work in every Windows shell.
 
 ## 3. Create the bot (the user does this)
 
@@ -32,7 +34,7 @@ Tell the user:
 4. Give it a username that ends in `bot` (for example `my_terminals_bot`).
 5. BotFather replies with a token. Keep that message private. Do not send it to me.
 
-Each machine needs its own bot. Two listeners on one bot steal each other's messages.
+Each machine needs its own bot, and it must be a new bot that no other tool uses. Two programs listening on one bot steal each other's messages.
 
 ## 4. Run setup (the user does this, in their own terminal)
 
@@ -45,6 +47,8 @@ RELAY setup
 `setup` refuses to run without a real terminal, so you cannot run it for them. It asks for the token (hidden while typing), checks it with Telegram, stores it in the operating system's secret store, asks for a machine name, starts the listener at login, and prints a link like `https://t.me/<bot>?start=<code>`.
 
 The user opens that link on the phone and taps **Start**. The code works once, expires in 15 minutes, and five wrong codes cancel it. Setup then prints "Paired".
+
+Tell the user that sessions started from the phone may edit files without asking (permission mode `acceptEdits`); `status` shows the mode and `docs/commands.md` explains how to change it.
 
 Recommend that the user turns on two-step verification in Telegram (Settings, Privacy and Security, Two-Step Verification). Whoever controls the Telegram account controls these terminals.
 

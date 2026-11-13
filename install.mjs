@@ -54,16 +54,17 @@ function install() {
     const have = fs.existsSync(dest) ? fs.readFileSync(dest) : null;
     if (have && have.equals(want)) continue;
     changed.push(`${have ? 'update' : 'new   '}  ${dest}`);
-    if (listener) restart = true;
+    if (listener && have) restart = true;
     if (CHECK) continue;
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, want);
   }
 
   let commit = 'unknown';
+  try { commit = `v${JSON.parse(fs.readFileSync(path.join(REPO, 'package.json'), 'utf8')).version}`; } catch { /* keeps "unknown" */ }
   try { commit = execFileSync('git', ['-C', REPO, 'rev-parse', '--short', 'HEAD'], { encoding: 'utf8', env: helperEnv(), stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { /* not a git checkout */ }
 
-  console.log(`${CHECK ? 'CHECK' : 'INSTALL'} from ${REPO} at commit ${commit} into ${DEST}`);
+  console.log(`${CHECK ? 'CHECK' : 'INSTALL'} from ${REPO} at ${commit} into ${DEST}`);
   console.log(changed.length ? changed.join('\n') : `all ${FILES.length} files already match this checkout`);
   if (CHECK) process.exit(changed.length ? 2 : 0);
 
